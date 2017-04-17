@@ -2,8 +2,7 @@ version: '2'
 
 services:
     scratchpad:
-#        image: kiliant/hubtest:latest
-        image: test
+        image: kiliant/scratchpad:latest
         container_name: scratchpad
         ports:
         - "22:22"
