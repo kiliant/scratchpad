@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:rolling
 
 MAINTAINER Thomas Kilian
 
@@ -6,9 +6,11 @@ ENV TERM=xterm
 
 RUN echo "Hello Docker! Hello World!"
 
-RUN apt-get -q=2 update
+COPY target/sources.list /etc/apt/sources.list
 
-RUN apt-get -q=2 install \
+RUN apt-get -q update --fix-missing && \
+    apt-get -y upgrade && \
+    apt-get -y install \
         vim \
         tmux \
         gcc \
@@ -16,11 +18,11 @@ RUN apt-get -q=2 install \
         nmap \
         man-db \
         openssh-server \
-        python2 python-dev \
+        python python-dev \
         python3 python3-dev \
         git \
-        rustc \
         golang \
+        rustc
 
 RUN mkdir /var/run/sshd
 RUN chmod 0755 /var/run/sshd
