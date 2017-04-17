@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd "`pwd`/`dirname "$0"`"
+
+docker pull kiliant/scratchpad:latest
+
+docker-compose up -d scratchpad
