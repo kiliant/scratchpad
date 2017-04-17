@@ -9,3 +9,4 @@ services:
         stdin_open: true
         volumes:
         - $HOME/.ssh/authorized_keys:/root/.ssh/authorized_keys
+        - $HOME/scratchpad:/mnt/host
