@@ -9,7 +9,7 @@
 2. Execute ```docker-compose up -d scratchpad```
 
 ## How to use?
-Docker will mount *$HOME/.ssh/authorized_keys* inside *scratchpad* to both *root* and user *me*. You can __connect via ssh__ to these accounts using suitable keys. It is advised to use the *me* user preferredly over the *root* user.
+Docker will mount *$HOME/.ssh/authorized_keys* inside *scratchpad* (read-only) to both *root* and user *me*. You can __connect via ssh__ to these accounts using suitable keys. It is advised to use the *me* user preferredly over the *root* user.
 
 For __data exchange__, *$HOME/scratchpad* will be created (if not already existing) and be mapped to */mnt/host* inside the container.
 
