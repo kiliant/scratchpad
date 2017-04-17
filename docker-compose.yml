@@ -2,11 +2,14 @@ version: '2'
 
 services:
     scratchpad:
-        image: kiliant/scratchpad:latest
+#        image: kiliant/scratchpad:latest
+        image: a46962a86f1e
         container_name: scratchpad
+        hostname: scratchpad
         ports:
         - "22:22"
         stdin_open: true
         volumes:
-        - $HOME/.ssh:/root/.ssh
+        - $HOME/.ssh:/root/.ssh:ro
+        - $HOME/.ssh:/home/me/.ssh:ro
         - $HOME/scratchpad:/mnt/host

@@ -32,11 +32,12 @@ RUN apt-get -q update --fix-missing && \
 
 RUN locale-gen en_US.UTF-8
 
+RUN useradd -ms /bin/bash me
+
 #########################################################
 # create required folder for sshd
 #########################################################
 RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd
-
 
 #########################################################
 # preparations for operation
