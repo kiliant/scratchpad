@@ -13,12 +13,7 @@ Docker will mount *$HOME/.ssh/authorized_keys* inside *scratchpad* (read-only) t
 
 For __data exchange__, *$HOME/scratchpad* will be created (if not already existing) and be mapped to */mnt/host* inside the container.
 
-If you trust your host, it may be useful to add
-```
-  Host localhost
-  StrictHostKeyChecking no
- ```
-to your `.ssh/config`. This will avoid warnings about changed host keys on each new container.
+If you pull a new image from docker hub, you will likely get a host key verification warning. Use `ssh-keygen -R localhost` to remove the previously saved host key. This will avoid warnings about changed host keys on each new container.
 
 ## Contribute!
 *scratchpad* shall stay simple and basic foundation for your local development environment.
