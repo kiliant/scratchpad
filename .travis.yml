@@ -1,0 +1,8 @@
+language: bash
+sudo: required
+services:
+    - docker
+script:
+    - make all
+after_script:
+    - make clean

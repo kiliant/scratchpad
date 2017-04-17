@@ -8,5 +8,5 @@ services:
         - "22:22"
         stdin_open: true
         volumes:
-        - $HOME/.ssh/authorized_keys:/root/.ssh/authorized_keys
+        - $HOME/.ssh:/root/.ssh
         - $HOME/scratchpad:/mnt/host
