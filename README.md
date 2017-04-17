@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kiliant/scratchpad.svg?branch=master)](https://travis-ci.org/kiliant/scratchpad)
+
 # scratchpad
 *scratchpad* is a lightweight and easily extendible workspace container for local use.
 
