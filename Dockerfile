@@ -15,7 +15,7 @@ RUN apt-get -q=2 install \
         htop \
         nmap \
         man-db \
-        openssh-server
+        openssh-server \
         python2 python-dev \
         python3 python3-dev \
         git \
