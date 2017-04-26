@@ -1,4 +1,4 @@
-FROM ubuntu:rolling
+FROM ubuntu:zesty
 
 MAINTAINER Thomas Kilian
 
@@ -42,5 +42,5 @@ RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd
 #########################################################
 # preparations for operation
 #########################################################
-EXPOSE 22
+EXPOSE 22 4000
 CMD ["/usr/sbin/sshd", "-D"]
