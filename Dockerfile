@@ -20,6 +20,8 @@ RUN apt-get -q update --fix-missing && \
         vim \
         tmux \
         gcc \
+        strace \
+        gdb \
         htop \
         nmap \
         man-db \
@@ -28,7 +30,8 @@ RUN apt-get -q update --fix-missing && \
         python3 python3-dev \
         git \
         golang \
-        rustc
+        rustc \
+        locales
 
 RUN locale-gen en_US.UTF-8
 
