@@ -31,6 +31,7 @@ RUN apt-get -q update --fix-missing && \
         git \
         golang \
         rustc \
+        cargo \
         locales
 
 RUN locale-gen en_US.UTF-8
