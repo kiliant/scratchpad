@@ -10,9 +10,8 @@ services:
         restart: always
         ports:
         - "22:22"
-        - "127.0.0.1:4000:4000"
         stdin_open: true
         volumes:
         - $HOME/.ssh:/root/.ssh:ro
         - $HOME/.ssh:/home/me/.ssh:ro
-        - $HOME/scratchpad:/home/me
+        - $HOME/scratchpad:/home/me/host
