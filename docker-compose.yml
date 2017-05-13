@@ -2,9 +2,10 @@ version: '2'
 
 services:
     scratchpad:
-#        image: kiliant/scratchpad:latest
-        image: 846248229cee
+        image: kiliant/scratchpad:latest
         container_name: scratchpad
+        security_opt:
+            - seccomp:unconfined
         hostname: scratchpad
         restart: always
         ports:
