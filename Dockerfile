@@ -3,7 +3,6 @@ FROM ubuntu:zesty
 MAINTAINER Thomas Kilian
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV TERM=xterm
 ENV LANGUAGE en_US:en
 ENV LANG en_US.UTF-8  
 ENV LC_ALL en_US.UTF-8
@@ -35,13 +34,21 @@ RUN apt-get -q update --fix-missing && \
         locales
 
 RUN locale-gen en_US.UTF-8
-
-RUN useradd -ms /bin/bash me
+RUN useradd -m -d /home/me -s /bin/bash me
 
 #########################################################
 # create required folder for sshd
 #########################################################
 RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd
+
+#########################################################
+# install vundle and plugins for vim
+#########################################################
+RUN git clone https://github.com/gmarik/Vundle.vim.git /home/me/.vim/bundle/Vundle.vim
+COPY target/vimrc /home/me/.vimrc
+RUN chown -R me:me /home/me/.vim /home/me/.vimrc
+RUN su me -c 'vim -E -u /home/me/.vimrc -S /home/me/.vim/vundle.vim +PluginInstall +qall > /dev/null' || true
+
 
 #########################################################
 # preparations for operation
