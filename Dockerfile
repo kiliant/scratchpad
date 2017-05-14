@@ -46,6 +46,7 @@ RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd
 #########################################################
 RUN git clone https://github.com/gmarik/Vundle.vim.git /home/me/.vim/bundle/Vundle.vim
 COPY target/vimrc /home/me/.vimrc
+COPY target/bashrc /home/me/.bashrc
 RUN chown -R me:me /home/me/.vim /home/me/.vimrc
 RUN su me -c 'vim -E -u /home/me/.vimrc -S /home/me/.vim/vundle.vim +PluginInstall +qall > /dev/null' || true
 
