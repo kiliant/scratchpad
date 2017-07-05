@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV LANGUAGE en_US:en
 ENV LANG en_US.UTF-8  
 ENV LC_ALL en_US.UTF-8
+ENV TERM xterm
 
 RUN echo "Hello Docker! Hello World!"
 
@@ -19,6 +20,7 @@ RUN apt-get -q update --fix-missing && \
         vim \
         tmux \
         gcc \
+        libc6-i386 `# /lib/ld-linux.so.2 for 32 bit support` \
         strace \
         gdb \
         htop \
@@ -39,7 +41,7 @@ RUN useradd -m -d /home/me -s /bin/bash me
 #########################################################
 # create required folder for sshd
 #########################################################
-RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd
+RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd && mkdir /home/me/.ssh && chown me:me /home/me/.ssh && mkdir /root/.ssh
 
 #########################################################
 # install vundle and plugins for vim

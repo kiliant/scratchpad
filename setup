@@ -5,3 +5,11 @@ cd "`pwd`/`dirname "$0"`"
 docker pull kiliant/scratchpad:latest
 
 docker-compose up -d scratchpad
+
+# copy authorized_keys to container for ssh login
+docker cp ~/.ssh/authorized_keys scratchpad:/home/me/.ssh/
+docker cp ~/.ssh/authorized_keys scratchpad:/root/.ssh/
+
+# correcting ownership, otherwise login via keys won't be possible
+docker exec scratchpad chown -R root:root /root/.ssh
+docker exec scratchpad chown -R me:me /home/me/.ssh

@@ -12,6 +12,4 @@ services:
         - "22:22"
         stdin_open: true
         volumes:
-        - $HOME/.ssh:/root/.ssh:ro
-        - $HOME/.ssh:/home/me/.ssh:ro
         - $HOME/scratchpad:/home/me/host
