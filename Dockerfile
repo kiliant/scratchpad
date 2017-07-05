@@ -22,6 +22,8 @@ RUN apt-get -q update --fix-missing && \
         gcc \
         libc6-i386 `# /lib/ld-linux.so.2 for 32 bit support` \
         strace \
+        nc \
+        telnet \
         gdb \
         htop \
         nmap \
