@@ -37,13 +37,12 @@ RUN apt-get -q update --fix-missing && \
         cargo \
         locales
 
+# gdb-peda
+RUN git clone https://github.com/longld/peda.git /home/me/peda && echo "source ~/peda/peda.py" >> /home/me/.gdbinit
+
 RUN locale-gen en_US.UTF-8
 RUN useradd -m -d /home/me -s /bin/bash me
 
-#########################################################
-# create required folder for sshd
-#########################################################
-RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd && mkdir /home/me/.ssh && chown me:me /home/me/.ssh && mkdir /root/.ssh
 
 #########################################################
 # install vundle and plugins for vim
@@ -53,6 +52,18 @@ COPY target/vimrc /home/me/.vimrc
 COPY target/bashrc /home/me/.bashrc
 RUN chown -R me:me /home/me/.vim /home/me/.vimrc
 RUN su me -c 'vim -E -u /home/me/.vimrc -S /home/me/.vim/vundle.vim +PluginInstall +qall > /dev/null' || true
+
+
+#########################################################
+# create required folder for sshd
+#########################################################
+RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd
+
+
+#########################################################
+# CREATE FOLDERS AND PERMISSIONS SECTION
+#########################################################
+RUN mkdir /home/me/.ssh && chown -R me:me /home/me/ && mkdir /root/.ssh
 
 
 #########################################################
