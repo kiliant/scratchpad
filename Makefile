@@ -5,7 +5,7 @@ build:
 
 run:
 	docker run -d --name scratchpad \
-        -p 22:22 \
+        -p 2222:22 \
         -v "`pwd`/.ssh":/root/.ssh \
 		-v "`pwd`/scratchpad":/mnt/host \
 		-t scratchpad
