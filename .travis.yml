@@ -1,5 +1,6 @@
 language: bash
 sudo: required
+group: travis_lts
 services:
     - docker
 script:

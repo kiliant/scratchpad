@@ -4,8 +4,10 @@ services:
     scratchpad:
         image: kiliant/scratchpad:latest
         container_name: scratchpad
-        security_opt:
-            - seccomp:unconfined
+# for debugging (e.g. with gdb) uncomment this ->
+#        security_opt:
+#            - seccomp:unconfined
+# <-
         hostname: scratchpad
         restart: always
         ports:
