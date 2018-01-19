@@ -1,19 +1,16 @@
-FROM ubuntu:zesty
+FROM ubuntu:latest
 
 MAINTAINER Thomas Kilian
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV LANGUAGE en_US:en
-ENV LANG en_US.UTF-8  
-ENV LC_ALL en_US.UTF-8
-ENV TERM xterm
+ENV DEBIAN_FRONTEND=noninteractive LANGUAGE=en_US:en LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 TERM=xterm
 
 RUN echo "Hello Docker! Hello World!"
 
 #########################################################
 # Install Packages
 #########################################################
-COPY target/sources.list /etc/apt/sources.list
+#COPY target/sources.list /etc/apt/sources.list
+
 RUN apt-get -q update --fix-missing && \
     apt-get -y upgrade && \
     apt-get -y install \
@@ -69,5 +66,5 @@ RUN mkdir /home/me/.ssh && chown -R me:me /home/me/ && mkdir /root/.ssh
 #########################################################
 # preparations for operation
 #########################################################
-EXPOSE 22 4000
+EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
